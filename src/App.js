@@ -7,7 +7,13 @@ class App extends Component {
   constructor(){
     super();
     this.state = {
-      movieName: 'Indiana Jones',
+      movies: [
+        {name: 'Indiana Jones 1', year: 1981},
+        {name: 'Indiana Jones 2', year: 1984},
+        {name: 'Indiana Jones 3', year: 1989},
+        {name: 'Indiana Jones 4', year: 2008},
+        {name: 'Indiana Jones 5', year: 2023},
+      ]
 
     }
   }
@@ -15,19 +21,26 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Welcome te Lareveller</h1>
-        <p>My favorite movie is {this.state.movieName}.</p>
+        <p>My favorite movie is {this.state.movies[0].name}. {this.state.movies[0].year}</p>
+        <p>My favorite movie is {this.state.movies[1].name}. {this.state.movies[1].year}</p>
+        <p>My favorite movie is {this.state.movies[2].name}. {this.state.movies[2].year}</p>
+        <p>My favorite movie is {this.state.movies[3].name}. {this.state.movies[3].year}</p>
+        <p>My favorite movie is {this.state.movies[4].name}. {this.state.movies[4].year}</p>
         <button onClick={() =>{
-          this.setState({movieName: "Indiana Jones 2"})
+          this.setState({
+            movies: [
+              {name: 'Batman 1', year: 1981},
+              {name: 'Batman 2', year: 1984},
+              {name: 'Batman 3', year: 1989},
+              {name: 'Batman 4', year: 2008},
+              {name: 'Batman 5', year: 2023},
+            ]
+          })
         }}
         >
          Cambiar el titulo 
         </button>
-        <button onClick={() =>{
-          this.setState({movieName: "Indiana Jones 3"})
-        }}
-        >
-         Cambiar el titulo 
-        </button>
+       
       </div>
     )
   } 
