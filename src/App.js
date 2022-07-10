@@ -17,6 +17,17 @@ class App extends Component {
 
     }
   }
+  changeName =(event) => {
+    this.setState({
+      movies: [
+        {name: event.target.value, year: 1981},
+        {name: 'Batman 2', year: 1984},
+        {name: 'Batman 3', year: 1989},
+        {name: 'Batman 4', year: 2008},
+        {name: 'Batman 5', year: 2023},
+      ]
+    })
+  }
   render(){
     return (
       <div className="App">
@@ -26,20 +37,7 @@ class App extends Component {
         <p>My favorite movie is {this.state.movies[2].name}. {this.state.movies[2].year}</p>
         <p>My favorite movie is {this.state.movies[3].name}. {this.state.movies[3].year}</p>
         <p>My favorite movie is {this.state.movies[4].name}. {this.state.movies[4].year}</p>
-        <button onClick={() =>{
-          this.setState({
-            movies: [
-              {name: 'Batman 1', year: 1981},
-              {name: 'Batman 2', year: 1984},
-              {name: 'Batman 3', year: 1989},
-              {name: 'Batman 4', year: 2008},
-              {name: 'Batman 5', year: 2023},
-            ]
-          })
-        }}
-        >
-         Cambiar el titulo 
-        </button>
+        <input type="text" onChange={this.changeName} value={this.state.movies[0].name}/>
        
       </div>
     )
