@@ -4,37 +4,49 @@ import { Component } from 'react';
 import './App.css';
 
 class App extends Component {
-  constructor(){
+  constructor() {
     super();
     this.state = {
-      movies: []
+      movies: [],
+      showMovies: false
 
     }
   }
 
-   componentDidMount(){
-      fetch('https://fake-movie-database-api.herokuapp.com/api?s=batman'
-      
-      ).then(response => response.json())
-        .then((apiMovies) => 
-           this.setState(() => {
-             return { movies: apiMovies['Search'] }
-           }
-       ))
+  componentDidMount() {
+    fetch('https://fake-movie-database-api.herokuapp.com/api?s=batman'
+
+    ).then(response => response.json())
+      .then((apiMovies) =>
+        this.setState(() => {
+          return { movies: apiMovies['Search'] }
+        }
+        ))
   }
-  render(){
+  render() {
+    let { showMovies } = this.state;
+    let renderMovies = null;
+
+    if (showMovies) {
+      renderMovies = (
+        <div>
+          {
+            this.state.movies.map((movie) => {
+              return <h2 key={movie.imdbID}>My favorite movie is {movie.Title}{" "}{movie.Year}</h2>
+            })}
+        </div>
+      )
+    }
     return (
       <div className="App">
         <h1>Welcome te Lareveller</h1>
-        {this.state.movies.map((movie)=>{
-              return <h2 key={movie.imdbID}>My favorite movie is {movie.Title}{" "}{movie.Year}</h2>
-        })}
-     
-       
-       
+        <button onClick={() => {
+          this.setState({ showMovies: !showMovies })
+        }}>Show Movies</button>
+         {renderMovies}
       </div>
     )
-  } 
+  }
 }
 
 export default App;
