@@ -8,7 +8,8 @@ class App extends Component {
     super();
     this.state = {
       movies: [],
-      showMovies: false
+      showMovies: false,
+      searchInput: ''
 
     }
   }
@@ -19,13 +20,13 @@ class App extends Component {
     ).then(response => response.json())
       .then((apiMovies) =>
         this.setState(() => {
-          return { movies: apiMovies['Search'] }
+          return { movies: apiMovies['Search'],showMovies: true }
         }
         ))
   }
   render() {
     let { showMovies } = this.state;
-    let renderMovies = null;
+    let renderMovies = 'Loading Movies...';
 
     if (showMovies) {
       renderMovies = (
@@ -40,9 +41,15 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Welcome te Lareveller</h1>
-        <button onClick={() => {
-          this.setState({ showMovies: !showMovies })
-        }}>Show Movies</button>
+        <input type='search' 
+               placeholder="search movies" 
+               onChange={(event)=> {
+                const search = event.target.value;
+                this.setState(()=>{
+                    return{ searchInput: search}
+                })
+              
+              }} />
          {renderMovies}
       </div>
     )
