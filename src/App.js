@@ -1,5 +1,6 @@
 
 import { Component } from 'react';
+import MovieList from './Components/movie-list/movie-list';
 
 import './App.css';
 
@@ -45,14 +46,7 @@ class App extends Component {
     let renderMovies = 'Loading Movies...';
 
     if (showMovies) {
-      renderMovies = (
-        <div>
-          {
-            filterMovies.map((movie) => {
-              return <h2 key={movie.imdbID}>My favorite movie is {movie.Title}{" "}{movie.Year}</h2>
-            })}
-        </div>
-      )
+      renderMovies =  <MovieList movies={filterMovies} />
     }
     return (
       <div className="App">
@@ -60,6 +54,7 @@ class App extends Component {
         <input type='search' 
                placeholder="search movies" 
                onChange={this.searchMovieHandler} />
+         
          {renderMovies}
       </div>
     )
