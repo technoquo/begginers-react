@@ -5,7 +5,7 @@ class MovieList extends Component{
 
     render(){
          return (
-            <div>
+            <div className="grid grid-cols-3 gap-4">
             {
               this.props.movies.map((movie) => {
                 return <MovieCard movie={movie}/>

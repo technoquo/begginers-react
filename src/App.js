@@ -49,12 +49,15 @@ class App extends Component {
       renderMovies =  <MovieList movies={filterMovies} />
     }
     return (
-      <div className="App">
-        <h1>Welcome te Lareveller</h1>
-        <input type='search' 
+      <div className="max-w-6xl mx-auto bg-gray-400">
+        <h1 className="flex justify-center text-2xl font-semibold">Welcome te Lareveller</h1>
+        <div className="flex justify-center">
+        <input 
+               className=" m-2 p-2 text-gray-400 rounded-md"
+               type='search' 
                placeholder="search movies" 
-               onChange={this.searchMovieHandler} />
-         
+               onChange={this.searchMovieHandler} />       
+        </div>
          {renderMovies}
       </div>
     )
