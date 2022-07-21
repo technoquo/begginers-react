@@ -5,11 +5,9 @@ const MovieCard = ({movie}) => {
              <div className=" flex justify-center pt-3">
              <img className="rounded-t-lg" src={Poster} alt={Title} width="182" height="268"></img>
              </div>          
-             <div className="p-5">
-                 <a href="#">
+             <div className="p-5">               
                      <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                         {Title}</h5>
-                </a>
+                         {Title}</h5>             
                  <span className="mr-4">{Year}</span>
              </div>
          </div>
