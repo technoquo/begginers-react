@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import MovieList from './Components/movie-list/movie-list';
 import { Routes, Route } from "react-router-dom";
 import About from './Pages/About';
-
+import MovieDetails from './Pages/MovieDetails';
 const App = () => {
 
 const [movies, setMovies] = useState([]);
@@ -10,10 +10,10 @@ const [showMovies, setShowMovies] = useState(false);
 const [searchInput, setSearchInput] = useState('');
 
 useEffect(() =>{
-       fetch('https://fake-movie-database-api.herokuapp.com/api?s=batman')
+       fetch('http://localhost:8000/movies')
           .then(response => response.json())
           .then((apiMovies) => {
-            setMovies(apiMovies['Search'])
+            setMovies(apiMovies)
             setShowMovies(true)          
           })
     }, [])
@@ -46,6 +46,7 @@ useEffect(() =>{
               <Routes>
                 <Route path="/" element={renderMovies} />
                 <Route path="about" element={<About />} />
+                <Route path="movies/:id" element={<MovieDetails />} />
               </Routes>             
             </div>
           )
