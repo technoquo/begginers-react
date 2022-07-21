@@ -1,5 +1,8 @@
 import { useState, useEffect } from 'react';
 import MovieList from './Components/movie-list/movie-list';
+import { Routes, Route } from "react-router-dom";
+import About from './Pages/About';
+
 const App = () => {
 
 const [movies, setMovies] = useState([]);
@@ -40,7 +43,10 @@ useEffect(() =>{
                      placeholder="search movies" 
                      onChange={searchMovieHandler} />       
               </div>
-               {renderMovies}
+              <Routes>
+                <Route path="/" element={renderMovies} />
+                <Route path="about" element={<About />} />
+              </Routes>             
             </div>
           )
         }
